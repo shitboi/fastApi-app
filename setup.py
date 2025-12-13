@@ -28,7 +28,7 @@ if com.returncode==0:
         subprocess.run('cp fastapi_nginx /etc/nginx/sites-enabled/fastapi_nginx && service nginx restart', shell=True)
 
         # start fastapi app
-        subprocess.run('chmod +x start.sh' && ./start.sh, shell=True)
+        subprocess.run('chmod +x start.sh && ./start.sh', shell=True)
 
 
 # To start the api, run 'python3 -m uvicorn main:app' directly on the server
