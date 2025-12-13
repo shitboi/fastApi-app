@@ -20,7 +20,7 @@ if com.returncode==0:
     ip = com.stdout.decode().split(' ')[5].split('/')[0]
 
     # replace servername with serverIP address
-    replace_com = f"sed -i 's/serverPublicIP/{ip}/g' fastapi-nginx"
+    replace_com = f"sed -i 's/serverPublicIP/{ip}/g' ./fastapi-nginx"
     replacement = subprocess.run(replace_com, shell=True)
     if replacement.returncode==0:
         # copy file to nginx site-enabled dir and restart nginx
