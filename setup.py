@@ -25,7 +25,7 @@ if com.returncode==0:
     replacement = subprocess.run(replace_com, shell=True)
     if replacement.returncode==0:
         # copy file to nginx site-enabled dir and restart nginx
-        subprocess.run('cp fastapi-nginx /etc/nginx/site-enabled/ && service nginx restart', shell=True)
+        subprocess.run('cp fastapi_nginx /etc/nginx/site-enabled/ && service nginx restart', shell=True)
 
         # start fastapi app
         subprocess.run('python3 -m uvicorn main:app')
