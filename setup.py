@@ -5,6 +5,7 @@ import subprocess
 # # clone repo and move to dir (useful for authomated deployment)
 # subprocess.run('git clone https://github.com/shitboi/fastApi-app.git')
 
+print(f'Currently working in {os.getcwd()}')
 try:
     os.chdir('fastApi-app')
 except Exception as e:
