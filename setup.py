@@ -31,3 +31,4 @@ if com.returncode==0:
         subprocess.run('python3 -m uvicorn main:app')
 
 
+# To start the api, run 'python3 -m uvicorn main:app' directly on the server
