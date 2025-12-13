@@ -33,5 +33,4 @@ def get_server(server_ip):
     x = x[x['ipAddress']==server_ip].to_dict()
     return {i: str(list(x[i].values())[0]) for i in list(x.keys())}
 
-
 # get_servers()
