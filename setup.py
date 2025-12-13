@@ -6,6 +6,9 @@ import subprocess
 # subprocess.run('git clone https://github.com/shitboi/fastApi-app.git')
 
 print(f'Currently working in {os.getcwd()}')
+f = subprocess.run('ls', shell=True, stdout=subprocess.PIPE)
+print(f.stdout.decode())
+
 try:
     os.chdir('fastApi-app')
 except Exception as e:
