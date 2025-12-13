@@ -2,8 +2,8 @@ import os
 import subprocess
 
 
-# clone repo and move to dir
-subprocess.run('git clone https://github.com/shitboi/fastApi-app.git')
+# # clone repo and move to dir (useful for authomated deployment)
+# subprocess.run('git clone https://github.com/shitboi/fastApi-app.git')
 
 os.chdir('~/fastApi-app')
 
