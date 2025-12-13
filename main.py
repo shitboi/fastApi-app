@@ -1,136 +1,37 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": 15,
-   "id": "2def3d9f",
-   "metadata": {},
-   "outputs": [
-    {
-     "ename": "TypeError",
-     "evalue": "FastAPI.get() missing 1 required positional argument: 'path'",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
-      "Cell \u001b[0;32mIn [15], line 9\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[38;5;28;01mimport\u001b[39;00m \u001b[38;5;21;01mpandas\u001b[39;00m \u001b[38;5;28;01mas\u001b[39;00m \u001b[38;5;21;01mpd\u001b[39;00m\n\u001b[1;32m      6\u001b[0m app \u001b[38;5;241m=\u001b[39m FastAPI\n\u001b[0;32m----> 9\u001b[0m \u001b[38;5;129m@app\u001b[39m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mget\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43m/hello\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m)\u001b[49m\n\u001b[1;32m     10\u001b[0m \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mread_root\u001b[39m():\n\u001b[1;32m     11\u001b[0m     \u001b[38;5;28;01mreturn\u001b[39;00m {\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mHello\u001b[39m\u001b[38;5;124m\"\u001b[39m: \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mWorld\u001b[39m\u001b[38;5;124m\"\u001b[39m}\n\u001b[1;32m     14\u001b[0m \u001b[38;5;129m@app\u001b[39m\u001b[38;5;241m.\u001b[39mget(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124m/\u001b[39m\u001b[38;5;124m\"\u001b[39m)\n\u001b[1;32m     15\u001b[0m \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mroot\u001b[39m():\n",
-      "\u001b[0;31mTypeError\u001b[0m: FastAPI.get() missing 1 required positional argument: 'path'"
-     ]
-    }
-   ],
-   "source": [
-    "from fastapi import FastAPI, Path\n",
-    "from pydantic import BaseModel\n",
-    "import pandas as pd\n",
-    "\n",
-    "\n",
-    "app = FastAPI\n",
-    "\n",
-    "\n",
-    "@app.get(\"/hello\")\n",
-    "def read_root():\n",
-    "    return {\"Hello\": \"World\"}\n",
-    "\n",
-    "\n",
-    "@app.get(\"/\")\n",
-    "def root():\n",
-    "    return {'Hello World': 'Welcome to our devops learning'}\n",
-    "    \n",
-    "@app.get('/all_servers')\n",
-    "def get_servers():\n",
-    "    x = pd.read_excel('servers.xlsx')\n",
-    "    return x\n",
-    "\n",
-    "@app.get('/server')\n",
-    "def get_servers(server_ip):\n",
-    "    x = pd.read_excel('servers.xlsx')\n",
-    "    return x[x['ip']==server_ip]"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 1,
-   "id": "58d48eff",
-   "metadata": {},
-   "outputs": [
-    {
-     "ename": "SyntaxError",
-     "evalue": "invalid syntax (4045261450.py, line 1)",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;36m  Cell \u001b[0;32mIn [1], line 1\u001b[0;36m\u001b[0m\n\u001b[0;31m    pip install fastapi, uvicorn\u001b[0m\n\u001b[0m        ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid syntax\n"
-     ]
-    }
-   ],
-   "source": [
-    "pip install fastapi, uvicorn\n",
-    "uvicorn main:app --reload #start app\n",
-    "localhost/doc  #swaggerui\n",
-    "localhost/redocdoc  #redoc style"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 3,
-   "id": "2ad30ca1",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "'item'"
-      ]
-     },
-     "execution_count": 3,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "def get(item: int):\n",
-    "    return item\n",
-    "\n",
-    "get('item')"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "74a197a8",
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "fb5dbdce",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "#"
-   ]
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3 (ipykernel)",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.10.8"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 5
-}
+from fastapi import FastAPI, Path
+from pydantic import BaseModel
+import pandas as pd
+import itertools
+
+
+app = FastAPI()
+
+
+@app.get("/")
+def root():
+    return {'Hello World': 'Welcome to our devops learning'}
+
+
+@app.get('/all_servers')
+def get_servers():
+    data = pd.read_excel('servers.xlsx').to_dict()
+    r = [[str(s) for s in list(k.values())] for k in list(data.values())]        
+    cols = ['id', 'ipAddress', 'country', 'region', 'opscodeBranch', 'description', 
+            'provider', 'puppetLastRun', 'decrpyptkey', 'status']
+    
+    g = [(a,b,c,d,e,f,g,h,i,j) for a,b,c,d,e,f,g,h,i,j 
+         in zip(r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],r[8],r[9])]
+    
+    records = [{cols[0]: r[0],cols[1]: r[1],cols[2]: r[2],cols[3]: r[3],cols[4]: r[4],
+        cols[5]: r[5],cols[6]: r[6],cols[7]: r[7],cols[8]: r[8],cols[9]: r[9]}
+         for r in g]
+    return records
+
+@app.get('/server')
+def get_server(server_ip):
+    x = pd.read_excel('servers.xlsx')
+    x = x[x['ipAddress']==server_ip].to_dict()
+    return {i: str(list(x[i].values())[0]) for i in list(x.keys())}
+
+
+# get_servers()
