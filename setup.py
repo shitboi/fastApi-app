@@ -5,7 +5,7 @@ import subprocess
 # # clone repo and move to dir (useful for authomated deployment)
 # subprocess.run('git clone https://github.com/shitboi/fastApi-app.git')
 
-os.chdir('root/fastApi-app')
+os.chdir('fastApi-app')
 
 #install apt package
 subprocess.run('apt install python3-fastapi python3-pandas python3-uvicorn nginx -y', shell=True)
