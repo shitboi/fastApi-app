@@ -15,11 +15,10 @@ except Exception as e:
 subprocess.run('apt install python3-fastapi python3-pandas python3-uvicorn nginx -y', shell=True)
 
 #get server ipAddress
-com = subprocess.run('ip a |grep "global eth0" |head -n 1',
+ip = subprocess.run('ip a |grep "global eth0" |head -n 1 |cut -d' ' -f6 |cut -d'/' -f1',
                      shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 if com.returncode==0:
-    ip = com.stdout.decode().split(' ')[5].split('/')[0]
-
+    # ip = com.stdout.decode().split(' ')[5].split('/')[0]
     # replace servername with serverIP address
     replace_com = f"sed -i 's/serverPublicIP/{ip}/g' fastapi_nginx"
     replacement = subprocess.run(replace_com, shell=True)
